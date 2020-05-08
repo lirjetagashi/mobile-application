@@ -1,0 +1,292 @@
+<!--
+* File Name: index.html
+*
+* Revision History:
+*       Lirjeta Gashi, Sara Asefi, 2020-04-16 : Created
+*-->
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device=width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>LS Airline</title>
+
+        <!--jQuery-->
+        <script src="js/lib/jquery-2.1.4.js"></script>
+        <!--jQueryMobile-->
+        <script src="js/lib/jquery.mobile-1.4.5.js"></script>
+        <!--jQueryMobile css-->
+        <link rel="stylesheet" type="text/css" href="css/lib/jquery.mobile-1.4.5.css">
+        <!--our stuff-->
+
+        <!--here map library starts here -->
+        <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
+                type="text/javascript" charset="utf-8"></script>
+        <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
+                type="text/javascript" charset="utf-8"></script>
+        <!--here map ends here-->
+
+        <!--jQuery validator-->
+        <script src="js/lib/jquery.validate.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+
+        <script src="js/lsglobal.js"></script>
+        <script src="js/lsgeo.js"></script>
+        <script src="js/lsfacade.js"></script>
+        <script src="js/lscustomerDAL.js"></script>
+        <script src="js/lsutil.js"></script>
+        <script src="js/lsdatabase.js"></script>
+
+    </head>
+    <body>
+        <div id="lsHomePage" data-role="page">
+            <header data-role="header" data-theme="b" data-position="fixed">
+                <h1>Home page</h1>
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="#lsHomePage" data-icon="home" class="ui-btn-active ui-state-persist"
+                               data-theme="b">Home</a></li>
+                        <li><a href="#lsAddCustomerPage" data-icon="plus" data-theme="b">Add</a></li>
+                        <li><a href="#lsViewCustomerPage" data-icon="grid" data-theme="b">Customers</a></li>
+                        <li><a href="#lsAboutPage" data-icon="gear" data-theme="b">About us</a></li>
+                    </ul>
+                </div>
+            </header>
+            <section data-role="content">
+                <h1>LS Airline's app!</h1>
+                <p> Welcome to our team!<br>We are here to make our customers happy, and make their trips unforgettable
+                    ones. Remember, they only have 5 places to book a trip, we are a growing company so in the near
+                    future we are going to include lots of different places.</p>
+                <div align="center">
+                    <img src="img/Travel-Airplane-icon.png" width="80%" alt="airplane">
+                </div>
+                <p>Soon there will be cruises by sea, a world cruise can provide the flexibility to explore multiple
+                    continents, traveling from the U.S. to Europe for example, so stay prepared for that. <strong>It all
+                        depends on us as a team!</strong>
+                </p>
+
+                <p>
+                    Please feel free to contact the head office if you have any question when using this app!
+                </p>
+                <div data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-theme="b">
+                    <h3>Click for our contact information </h3>
+                    <p> Call: +1(123) 125-12548<br>
+                        Email us at: lgashi@conestogac.on.ca
+                        or sasefi@conestogac.on.ca</p>
+                </div>
+
+                <p>Click to see our website:</p>
+                <a href="https://www.travelocity.ca/?langid=4105" data-role="button" data-icon="check"
+                   data-theme="b">Travel with us</a>
+            </section>
+            <footer data-role="footer" data-theme="b" data-position="fixed">
+                <h1>&copy; 2020 Lirjeta Gashi &amp; Sara Asefi</h1>
+            </footer>
+        </div>
+
+        <!-- 2.Add Customer page-->
+        <div id="lsAddCustomerPage" data-role="page">
+            <header data-role="header" data-theme="b" data-position="fixed">
+                <h1> Add a booking </h1>
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="#lsHomePage" data-icon="home" data-theme="b">Home</a></li>
+                        <li><a href="#lsAddCustomerPage" data-icon="plus" data-theme="b"
+                               class="ui-btn-active ui-state-persist">Add</a></li>
+                        <li><a href="#lsViewCustomerPage" data-icon="grid" data-theme="b">Customers</a></li>
+                        <li><a href="#lsAboutPage" data-icon="gear" data-theme="b">About us</a></li>
+                    </ul>
+                </div>
+            </header>
+
+            <section data-role="content">
+                <form id="LSAddForm" action="#">
+                    <label for="lsFirstA">First Name:</label>
+                    <input type="text" id="lsFirstA" name="lsFirstA" data-clear-btn="true">
+
+                    <label for="lsLastA">Last Name:</label>
+                    <input type="text" id="lsLastA" name="lsLastA" data-clear-btn="true">
+
+                    <label for="lsEmailA">Email:</label>
+                    <input type="text" id="lsEmailA" name="lsEmailA" data-clear-btn="true">
+
+                    <label for="lsPhoneA">Phone Number:</label>
+                    <input type="text" id="lsPhoneA" name="lsPhoneA" data-clear-btn="true">
+
+                    <label for="lsDestinationA">Destination:</label>
+                    <select name="lsDestinationA" id="lsDestinationA" data-native-menu="false">
+                        <!--will be populate dynamically-->
+                    </select>
+
+                    <label for="lsDepartDateA">Departure Date:</label>
+                    <input type="date" id="lsDepartDateA" name="lsDepartDateA" data-clear-btn="true">
+
+                    <label for="lsReturnDateA">Return Date:</label>
+                    <input type="date" id="lsReturnDateA" name="lsReturnDateA" data-clear-btn="true">
+
+                    <label for="lsGuestsA">Number of Guests:</label>
+                    <input type="number" id="lsGuestsA" name="lsGuestsA" data-clear-btn="true">
+
+                    <label for="lsPriceA">Price:</label>
+                    <input type="text" id="lsPriceA" name="lsPriceA" data-clear-btn="true" disabled>
+
+                    <input type="checkbox" id="lsCheckA" name="lsCheckA"
+                           value="Do you want to add addition instruction?">
+                    <label for="lsCheckA"> Do you want to add addition instruction?</label>
+                    <div id="lsRatingDivA" hidden>
+                        <label for="lsInstructionA">Instruction:</label>
+                        <textarea rows="5" cols="50" id="lsInstructionA" name="lsInstructionA"></textarea>
+                    </div>
+
+                </form>
+                <button data-role="button" data-theme="b" data-inline="true" id="lsBtnSave" name="lsBtnSave">
+                    Save
+                </button>
+            </section>
+
+            <footer data-role="footer" data-theme="b" data-position="fixed">
+                <h1>&copy; 2020 Lirjeta Gashi &amp; Sara Asefi</h1>
+            </footer>
+        </div>
+
+        <!--LSViewCustomerPage starts here-->
+        <div id="lsViewCustomerPage" data-role="page">
+            <header data-role="header" data-theme="b" data-position="fixed">
+                <h1> Lists of bookings </h1>
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="#lsHomePage" data-icon="home" data-theme="b">Home</a></li>
+                        <li><a href="#lsAddCustomerPage" data-icon="plus" data-theme="b">Add</a></li>
+                        <li><a href="#lsViewCustomerPage" data-icon="grid" data-theme="b"
+                               class="ui-btn-active ui-state-persist">Customers</a></li>
+                        <li><a href="#lsAboutPage" data-icon="gear" data-theme="b">About us</a></li>
+                    </ul>
+                </div>
+            </header>
+            <section data-role="content">
+                <ul id="lsCustomersList" name="lsCustomersList" data-role="listview" class="ui-listview-inset"
+                    data-split-icon="gear">
+                </ul>
+            </section>
+            <footer data-role="footer" data-theme="b" data-position="fixed">
+                <h1>&copy; 2020 Lirjeta Gashi &amp; Sara Asefi</h1>
+            </footer>
+        </div>
+        <!--LSViewCustomerPage ends here-->
+
+        <!--LSEditCustomerPage starts here-->
+        <div id="lsEditCustomerPage" data-role="page">
+            <header data-role="header" data-theme="b" data-position="fixed">
+                <h1>Modify Booking</h1>
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="#lsHomePage" data-icon="home" data-theme="b">Home</a></li>
+                        <li><a href="#lsAddCustomerPage" data-icon="plus" data-theme="b">Add</a></li>
+                        <li><a href="#lsViewCustomerPage" data-icon="grid" data-theme="b"
+                               class="ui-btn-active ui-state-persist">Customers</a></li>
+                        <li><a href="#lsAboutPage" data-icon="gear" data-theme="b">About us</a></li>
+                    </ul>
+                </div>
+            </header>
+
+            <section data-role="content">
+                <form id="lsEditForm" action="#">
+                    <label for="lsFirstE">First Name:</label>
+                    <input type="text" id="lsFirstE" name="lsFirstE" data-clear-btn="true">
+
+                    <label for="lsLastE">Last Name:</label>
+                    <input type="text" id="lsLastE" name="lsLastE" data-clear-btn="true">
+
+                    <label for="lsEmailE">Email:</label>
+                    <input type="text" id="lsEmailE" name="lsEmailE" data-clear-btn="true">
+
+                    <label for="lsPhoneE">Phone Number:</label>
+                    <input type="text" id="lsPhoneE" name="lsPhoneE" data-clear-btn="true">
+
+                    <label for="lsDestinationE">Destination:</label>
+                    <select name="lsDestinationE" id="lsDestinationE" data-native-menu="false">
+                        <!--will be populate dynamically-->
+                    </select>
+
+                    <label for="lsDepartDateE">Departure Date:</label>
+                    <input type="date" id="lsDepartDateE" name="lsDepartDateE" data-clear-btn="true">
+
+                    <label for="lsReturnDateE">Return Date:</label>
+                    <input type="date" id="lsReturnDateE" name="lsReturnDateE" data-clear-btn="true">
+
+                    <label for="lsGuestsE">Number of Guests:</label>
+                    <input type="number" id="lsGuestsE" name="lsGuestsE" data-clear-btn="true">
+
+                    <label for="lsPriceE">Price:</label>
+                    <input type="text" id="lsPriceE" name="lsPriceE" data-clear-btn="true" disabled>
+
+                    <input type="checkbox" id="lsCheckE" name="lsCheckE"
+                           value="Do you want to add addition instruction?">
+                    <label for="lsCheckE"> Do you want to add addition instruction?</label>
+                    <div id="lsRatingDivE">
+                        <label for="lsInstructionE">Instruction:</label>
+                        <textarea rows="5" cols="50" id="lsInstructionE" name="lsInstructionE"></textarea>
+                    </div>
+
+                    <div data-role="controlgroup" data-type="horizontal">
+                        <button id="lsBtnCancel" name="lsBtnCancel" data-inline="true" style="background-color: yellow">
+                            Cancel
+                        </button>
+                        <button id="lsBtnDelete" name="lsBtnDelete" data-inline="true" data-theme="b">Delete</button>
+                        <button id="lsBtnUpdate" name="lsBtnUpdate" data-inline="true" class="ui-btn-active">Update
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <footer data-role="footer" data-theme="b" data-position="fixed">
+                <h1>&copy; 2020 Lirjeta Gashi &amp; Sara Asefi</h1>
+            </footer>
+
+        </div>
+
+        <!--LSEditCustomerPage ends here-->
+
+
+        <div id="lsAboutPage" data-role="page" data-url="lsAboutPage">
+            <header data-role="header" data-theme="b" data-position="fixed">
+                <h1>About us</h1>
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="#lsHomePage" data-icon="home" data-theme="b">Home</a></li>
+                        <li><a href="#lsAddCustomerPage" data-icon="plus" data-theme="b">Add</a></li>
+                        <li><a href="#lsViewCustomerPage" data-icon="grid" data-theme="b">Customers</a></li>
+                        <li><a href="#lsAboutPage" data-icon="gear" data-theme="b"
+                               class="ui-btn-active ui-state-persist">About us</a></li>
+                    </ul>
+                </div>
+            </header>
+            <section data-role="content">
+                <h1 align="center"><em>About us</em></h1>
+                <hr class="style">
+                <h3>Developed by: <em>Lirjeta Gashi</em><br>
+                    &nbsp;&nbsp;<em>Sara Asefi</em></h3>
+
+                <hr class="style">
+                <p>Address: 108 King Ave<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Waterloo<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Canada</p>
+                <hr class="style">
+                <p>Our main office: Florida, Miami<br>Contact +1(123) 125-12548 for more information</p>
+
+                <button type="button" id="btnShow" name="btnShow" data-icon="star" data-inline="true" data-theme="b">
+                    Find your location
+                </button>
+
+                <!--map goes here-->
+                <div style="width: 100%" id="mapContainer"></div>
+
+                <hr class="style">
+                <button id="lsBtnClearDatabase" name="lsBtnClearDatabase" data-theme="b">Clear Database</button>
+            </section>
+            <footer data-role="footer" data-theme="b" data-position="fixed">
+                <h1>&copy; 2020 Lirjeta Gashi &amp; Sara Asefi</h1>
+            </footer>
+        </div>
+    </body>
+</html>

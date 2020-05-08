@@ -1,0 +1,35 @@
+#lsAboutPage{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.ui-page {
+    background: #21b4e2;
+    background: -moz-linear-gradient(45deg,  #21b4e2 8%, #21b4e2 8%, #b7deed 11%, #b7deed 17%, #21b4e2 32%, #71ceef 45%, #b7deed 50%, #b7deed 50%, #b7deed 51%, #71ceef 72%, #71ceef 72%, #b7deed 73%, #71ceef 85%, #b7deed 89%);
+    background: -webkit-linear-gradient(45deg,  #21b4e2 8%,#21b4e2 8%,#b7deed 11%,#b7deed 17%,#21b4e2 32%,#71ceef 45%,#b7deed 50%,#b7deed 50%,#b7deed 51%,#71ceef 72%,#71ceef 72%,#b7deed 73%,#71ceef 85%,#b7deed 89%);
+    background: linear-gradient(45deg,  #21b4e2 8%,#21b4e2 8%,#b7deed 11%,#b7deed 17%,#21b4e2 32%,#71ceef 45%,#b7deed 50%,#b7deed 50%,#b7deed 51%,#71ceef 72%,#71ceef 72%,#b7deed 73%,#71ceef 85%,#b7deed 89%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#21b4e2', endColorstr='#b7deed',GradientType=1 );
+    color: black;
+    font-family: "Fira Code Medium";
+    font-weight: bold;
+    font-size: large;
+}
+
+hr.style {
+    height: 10px;
+    border: 1;
+    box-shadow: inset 0 9px 9px -3px rgba(32, 27, 23, 0.8);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+label.error{
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    padding:1px 20px 1px 20px;
+}
