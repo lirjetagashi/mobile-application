@@ -1,7 +1,7 @@
 # mobile-application
 
 ### - This is a project made using jQuery mobile. 
-### - I worked with a friend for this one, her name is Sara Asefi. 
+### - I worked with Sara Asefi for this application. 
 
 #### - Screenshot of the home page
 ![alt text](https://github.com/LG-D/mobile-application/blob/master/screenshot1.png)
